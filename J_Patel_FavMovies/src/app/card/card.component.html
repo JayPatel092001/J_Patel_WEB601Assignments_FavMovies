@@ -1,4 +1,7 @@
-<span [innerHTML]="myList.getHtml(0)"></span>
-<span [innerHTML]="myList.getHtml(1)"></span>
-<span [innerHTML]="myList.getHtml(2)"></span>
-<span [innerHTML]="myList.getHtml(3)"></span>
+<div class="card">
+    <div class="title">{{ MovieItem ? MovieItem.title : "" }}</div><br>
+    <div class="description">{{ MovieItem ? MovieItem.description : "" }}</div><br>
+    <div class="creator">{{ MovieItem ? MovieItem.creator : "" }}</div><br>
+    <div><img [src]="MovieItem ? MovieItem.imageUrl : ''"></div><br>
+    <div class="type">{{ MovieItem ? MovieItem.type : "" }}</div><br>
+  </div>
