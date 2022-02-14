@@ -1,8 +1,8 @@
-<h1>{{title}}</h1>
+<h1>{{ title }}</h1>
 
 <div>
-    <input #title>
-    <button (click)="listofmovie(title.value)">Submit</button>
+    <input #title1>
+    <button (click)="listofmovie(title1.value)">Submit</button>
     <p class="text1" *ngIf="avMovie">{{ avMovie }}</p>
     <p class="text2" *ngIf="avNotMovie">{{ avNotMovie }}</p>
    
