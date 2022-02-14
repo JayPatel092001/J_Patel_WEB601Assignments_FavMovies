@@ -4,6 +4,6 @@ export interface Movie{
     description: string;
     creator: string;
     imageUrl: string;
-    type: string;
+    type?: string;
     
     }
