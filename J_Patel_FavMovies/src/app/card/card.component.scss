@@ -19,6 +19,24 @@
     img{
         width: 300px;
     }
+
     
 }
 
+:host.action{
+    .card
+    {
+        color: blueviolet;
+        background-color: yellow;
+    }
+    
+}
+
+:host.reaction{
+    .card
+    {
+        color: papayawhip;
+        background-color: rebeccapurple;
+    }
+    
+}
