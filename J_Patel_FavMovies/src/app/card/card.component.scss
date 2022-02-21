@@ -30,7 +30,9 @@
 {
     font-weight: bold;
 }
-
+.bonus:first-of-type:hover{
+    border: 1px solid aqua;
+}
 :host.action{
     .card
     {
