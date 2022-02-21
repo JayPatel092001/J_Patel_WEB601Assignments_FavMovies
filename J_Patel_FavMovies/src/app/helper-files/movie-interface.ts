@@ -1,9 +1,10 @@
 export interface Movie{
     id: number;
-    title: string;
+    title?: string;
     description: string;
     creator: string;
-    imageUrl: string;
+    imageUrl?: string;
     type?: string;
+    tags?: string[];
     
     }

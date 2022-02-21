@@ -1,8 +1,9 @@
 :host{
     
     .card{
+
     border: 1px solid black;
-    width: 400px;
+   width: 400px;
    
     text-align: left;
  
@@ -18,9 +19,16 @@
     }
     img{
         width: 300px;
-    }
+    }   
+}
 
-    
+.affect1{
+    text-decoration: underline;
+
+}
+.affect2
+{
+    font-weight: bold;
 }
 
 :host.action{

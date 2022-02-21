@@ -10,7 +10,10 @@ import { Movie } from '../helper-files/movie-interface';
 export class CardComponent implements OnInit {
 @Input() MovieItem?: Movie
 
+
+specialColor = "blue";
   constructor() {
+  
     
    }
 

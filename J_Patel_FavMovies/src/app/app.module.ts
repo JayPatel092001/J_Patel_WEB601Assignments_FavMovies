@@ -5,13 +5,17 @@ import { AppComponent } from './app.component';
 import { CardComponent } from './card/card.component';
 import { MoviefilterPipe } from './moviefilter.pipe';
 import { ContentListComponent } from './content-list/content-list.component';
+import { DefaultTypePipe } from './default-type.pipe';
+import { HoverAffectDirective } from './hover-affect.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
     CardComponent,
     MoviefilterPipe,
-    ContentListComponent
+    ContentListComponent,
+    DefaultTypePipe,
+    HoverAffectDirective
   ],
   imports: [
     BrowserModule
