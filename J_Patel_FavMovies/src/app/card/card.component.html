@@ -1,12 +1,23 @@
-<div *ngIf="MovieItem" class="card" appHoverAffect="bonus">
-    <div class="title" >{{ MovieItem ? MovieItem.title : "" }}</div><br>
-    <div class="description">{{ MovieItem ? MovieItem.description : "" }}</div><br>
-    <div class="creator">{{ MovieItem ? MovieItem.creator : "" }}</div><br>
+<div  class="card" appHoverAffect="bonus">
+    <div class="title" >{{ MovieItem ? MovieItem.title :""}}</div><br>
+    <div class="description">{{ MovieItem ? MovieItem.description: ""  }}</div><br>
+    <div class="creator">{{ MovieItem ? MovieItem.creator: ""  }}</div><br>
 
-   <div *ngIf="MovieItem"><img [src]='MovieItem ? MovieItem.imageUrl: ""'>
 
-  </div><br>
-   
-    <div class="type" appHoverAffect="affect1">{{ MovieItem ? MovieItem.type : "" }}</div><br>
-    <div class="tags" appHoverAffect="affect2">{{ MovieItem ? MovieItem.tags : "" }}</div><br>
+
+    <img (click)="imageClicked()" *ngIf="MovieItem?.imageUrl" class="img"  [src]="MovieItem?.imageUrl">
+    <img (click)="imageClicked()" *ngIf="!MovieItem?.imageUrl" class="img" 
+    src="https://cdn.freebiesupply.com/images/thumbs/2x/imdb-logo.png">
+
+    <div class= "type"appHoverAffect ="affect1" *ngIf="MovieItem?.type" class="MovieItem?.type">
+      {{ MovieItem?.type }}
   </div>
+  <div class="tags" *ngIf="MovieItem?.tags">
+      <span appHoverAffect="affect2" class="tag" *ngFor="let tag of MovieItem?.tags">
+          #{{ tag }}
+      </span>
+  </div>
+  
+
+  </div>
+

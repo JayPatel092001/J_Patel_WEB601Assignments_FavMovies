@@ -21,4 +21,7 @@ specialColor = "blue";
 
   }
 
+  imageClicked(): void {
+    console.log("ID: ", this.MovieItem?.id, ", Title: ", this.MovieItem?.title);
+  }
 }

@@ -75,35 +75,98 @@ export class ContentListComponent implements OnInit {
       creator:"Dinesh Vijan.",
       imageUrl: 'https://images.indianexpress.com/2017/04/sushant-kriti-raabta-759.jpg',
       tags:['bollywood', 'all language']
-    },
-  ];
-  
+    }];
+    
 
+    
+    let ourPromise = new Promise((success, fail) => {
+      let testPass = false;
+      if (testPass) {
+        success("Addtion was successfull");
+      }
+      else {
+        fail("Failure");
+      }
+    });
+
+    console.log("First console log");
+
+    ourPromise
+      .then(function (successMessage) {
+        console.log("The promise succeeded and addition is successful: ", successMessage);
+      })
+      .catch(function (failureMessage) {
+        console.log("The promise failed : ", failureMessage);
+      });
+
+    console.log("Fourth console log");
+
+    let getStuff = async function () {
+      return "stuff";
+    }
+   
+    let getTheSameStuff = async function () {
+      return "Similar stuff";
+    }
+
+   
+    let getAllTheStuff = async () => {
+      const theFirstStuff = getStuff();
+      const theSecondStuff = getTheSameStuff();
+      return await Promise.all([theFirstStuff, theSecondStuff]);
+    }
+    getAllTheStuff().then((value) => {
+      console.log("First value from the getAllTheStuff method: ", value[0]);
+      console.log("Second value from the getAllTheStuff method: ", value[1]);
+
+    });
+  
+   
+   
+  
   }
+   
+  
+  addMovieToList(newMovie: Movie) {
+    console.log("old array values ", this.MovieList);
+
+    this.MovieList.push(newMovie);
+
+     
+    this.MovieList = [...this.MovieList]; 
+
+    console.log("Item is added successfully ? ", newMovie);
+    console.log("new array values ", this.MovieList);
+  }
+
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
+      
   }
+
+    
+
   listofmovie(cardNameOnTheTypescriptSide: string): void {
     
    
-    this.MovieList.forEach(t => {
-      if (t.title == cardNameOnTheTypescriptSide ){
-        this.pract = true;
+      this.MovieList.forEach(t => {
+        if (t.title == cardNameOnTheTypescriptSide ){
+          this.pract = true;
+        }
+      });
+      if(this.pract){
+        cardNameOnTheTypescriptSide = cardNameOnTheTypescriptSide+" is available in list.";
+        this.avMovie = cardNameOnTheTypescriptSide;
+        this.avNotMovie = "";
+  
+      }else{
+        cardNameOnTheTypescriptSide = cardNameOnTheTypescriptSide+" is not available in list.";
+        this.avNotMovie = cardNameOnTheTypescriptSide;
+        this.avMovie = "";
       }
-    });
-    if(this.pract){
-      cardNameOnTheTypescriptSide = cardNameOnTheTypescriptSide+" is available in list.";
-      this.avMovie = cardNameOnTheTypescriptSide;
-      this.avNotMovie = "";
-
-    }else{
-      cardNameOnTheTypescriptSide = cardNameOnTheTypescriptSide+" is not available in list.";
-      this.avNotMovie = cardNameOnTheTypescriptSide;
-      this.avMovie = "";
+      this.pract = false;
+      
     }
-    this.pract = false;
-    
-  }
- 
 
+
+ 
 }
