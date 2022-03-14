@@ -50,3 +50,14 @@
     }
     
 }
+
+:host.singleMoive
+{
+    .card
+    {
+        border: 3px solid rgb(50, 184, 172);
+        box-shadow: 5px 10px blue;
+        display: block;
+        margin: 0 auto;
+    }
+}

@@ -13,7 +13,7 @@ export class CardComponent implements OnInit {
 
 specialColor = "blue";
   constructor() {
-  
+    
     
    }
 

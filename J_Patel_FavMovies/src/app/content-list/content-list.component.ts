@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Movie } from '../helper-files/movie-interface';
+import { MovieService } from '../services/movie.service';
+import { MessageService } from '../services/message.service';
 
 @Component({
   selector: 'app-content-list',
@@ -14,74 +16,64 @@ export class ContentListComponent implements OnInit {
 
   title = "Movie List";
   MovieList: Movie[];
-  constructor(){
-    this.MovieList = [{
-      id:0,
-      title:'Sultan',
-      description:'This movie is done by my favrouite Actor Salman khan',
-      creator:"salman khan",
-      imageUrl: 'https://upload.wikimedia.org/wikipedia/en/1/1f/Sultan_film_poster.jpg',
-      tags:['bollywood', 'hindi']
-      
-    },{
-      id:1,
-      title:'DJ',
-      description:'This south movie',
-      creator:"Mahesh bhaat ",
-      imageUrl: 'https://upload.wikimedia.org/wikipedia/en/7/72/DJ_film_poster.jpg',
-      type:'action',
-      tags:['action','south', 'malyalm']
-    },
-    {
-      id:2,
-      title:'Bahubali',
-      description:'One of the  most money making in bollywood ',
-      creator:"Karan johar ",
-      imageUrl: "",
-      type:'action',
-      tags:['action','south', 'all language']
-    },
-    {
-      id:3,
-      title:'Pushpa',
-      description:' it stars Allu Arjun as the titular character alongside',
-      creator:"SuKuKumar",
-      imageUrl: 'https://tazacinema.com/wp-content/uploads/2020/04/Pushpa-Movie-First-Look-Poster-1.jpg',
-      type:'action and real life',
-      tags:['action and real','south', 'hindi']
-    },
-    {
-      id:4,
-      title:'Kgf',
-      description:'Chapter 1 is a 2018 Indian Kannada-language period action film written and directed by Prashanth Neel',
-      creator:"Prashanth Neel",
-      imageUrl: 'https://th.bing.com/th/id/OIP.skmYKsVV0sr3JQ_YgPuN4QHaMC?pid=ImgDet&rs=1',
-      type:'action and real-life',
-      tags:['action and real','south and bollywood', 'hindi']
-    },
-    {
-      id:5,
-      title:'Kesri',
-      description:'is a 2019 Indian Hindi-language war film written and directed by Anurag Singh',
-      creator:"Anurag Singh",
-      imageUrl: 'https://th.bing.com/th/id/OIP.XsXJ4emSgwrPKu8qtQJKqgHaE8?pid=ImgDet&rs=1',
-      type:'action',
-      tags:['action','bollywood', 'hindi']
-    },
-    {
-      id:6,
-      title:'Raabta',
-      description:'Indian Hindi-language romantic action thriller film with a dose of comedy directed by Dinesh Vijan.',
-      creator:"Dinesh Vijan.",
-      imageUrl: 'https://images.indianexpress.com/2017/04/sushant-kriti-raabta-759.jpg',
-      tags:['bollywood', 'all language']
-    },
-  ];
-  
+  singleMoive: Movie | undefined;
+
+  constructor(private movieService: MovieService){
+    this.MovieList = [];
+    this.singleMoive ;
+    let ourPromise = new Promise((success, fail) => {
+      let testPass = false;
+      if (testPass) {
+        success("Success was achieved!");
+      }
+      else {
+        fail("Failure :(");
+      }
+    });
+
+    console.log("First console log");
+
+  ourPromise
+    .then(function (successMessage) {
+      console.log("The promise succeeded and came back with the following message: ", successMessage);
+    })
+    .catch(function (failureMessage) {
+      console.log("The promise failed and came back with the following message: ", failureMessage);
+    });
+
+  console.log("Fourth console log");
+
+  let getStuff = async function () {
+    return "stuff";
+  }
+  // function async getStuffUsingOldFunctionDefinition(): string{
+  //   return "stuff";
+  // }
+  let getTheSameStuff = async function () {
+    return "Similar stuff";
+  }
+
+  //different way to represent functions
+  let getAllTheStuff = async () => {
+    const theFirstStuff = getStuff();
+    const theSecondStuff = getTheSameStuff();
+    //returns both promises
+    return await Promise.all([theFirstStuff, theSecondStuff]);
+  }
+  getAllTheStuff().then((value) => {
+    console.log("First value from the getAllTheStuff method: ", value[0]);
+    console.log("Second value from the getAllTheStuff method: ", value[1]);
+  });
 
   }
+
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
+    
+    this.MovieList = this.movieService.getContent();
+    this.singleMoive = this.movieService.getSingleItem(0);
+    console.log(this.singleMoive);
+
+    
   }
   listofmovie(cardNameOnTheTypescriptSide: string): void {
     
@@ -104,6 +96,13 @@ export class ContentListComponent implements OnInit {
     this.pract = false;
     
   }
- 
+
+  addMovieToList(newMovie : Movie)
+  {
+    this.MovieList.push(newMovie);
+    this.MovieList = Object.assign([], this.MovieList);
+    this.MovieList = [...this.MovieList];
+    console.log("new item added successfully.") 
+  }
 
 }

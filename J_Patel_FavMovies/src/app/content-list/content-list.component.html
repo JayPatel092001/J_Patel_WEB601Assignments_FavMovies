@@ -1,12 +1,14 @@
 <h1>{{ title }}</h1>
 
-<div>
-    <input #title1>
-    <button (click)="listofmovie(title1.value)">Submit</button>
+<div>    
     <p class="text1" *ngIf="avMovie">{{ avMovie }}</p>
     <p class="text2" *ngIf="avNotMovie">{{ avNotMovie }}</p>
    
 </div>
+
+<app-card *ngIf="singleMoive" [MovieItem]="singleMoive" [class.singleMoive]="singleMoive">
+    
+</app-card>
 
 <h2>Action Movies</h2>
 <app-card *ngFor = "let item of (MovieList | moviefilter:'action'); index as i " 
