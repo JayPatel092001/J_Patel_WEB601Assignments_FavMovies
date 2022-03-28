@@ -1,4 +1,8 @@
 <app-content-list></app-content-list>
 
-
-<app-message></app-message>
+<div *ngIf="messageSer.messages.length">
+    <h2>Messages</h2>
+    <div *ngFor="let message of messageSer.messages">
+        {{message}}
+    </div>
+</div>
