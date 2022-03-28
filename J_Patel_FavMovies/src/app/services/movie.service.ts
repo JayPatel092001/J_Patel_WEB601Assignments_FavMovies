@@ -4,22 +4,42 @@ import { MovieList } from "../helper-files/contentDb";
 import { Movie } from "../helper-files/movie-interface";
 import { MessageService } from "./message.service";
 
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+
+
+
 @Injectable({
     providedIn:'root'
 })
 export class MovieService
 {
     
-    
-    constructor(private messageSer: MessageService) { }
+    private httpOptions = {
+        headers: new HttpHeaders({ 'Content-type': 'application/json' })
+      };
+      
+    constructor(private http: HttpClient, private msgService: MessageService) { }
 
-    getContent(): Movie[]{
-        return MovieList;
-    }
+    
+    getContent(): Observable<Movie[]> { // get the content synchronously - not real world
+        this.msgService.add('Movie List');
+        return this.http.get<Movie[]>("api/movie");
+        
+      }
+
+      addContent(newContentItem: Movie): Observable<Movie>{
+        console.log("added the new content: ", newContentItem);
+        return this.http.post<Movie>("api/food", newContentItem, this.httpOptions);
+      }
+    
+      updateContent(contentItem: Movie): Observable<any>{
+        this.msgService.add('Item Updated completly.') ;
+        return this.http.put("api/movie", contentItem, this.httpOptions);
+      }
 
     getSingleItem(id: number): Movie
     {
-        this.messageSer.add('Single Item Added Successfully!...' + id);
+        this.http.get('Single Item Added Successfully!...' + id);
         return MovieList[id];
     }
 }

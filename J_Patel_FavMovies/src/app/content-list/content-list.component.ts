@@ -13,7 +13,6 @@ export class ContentListComponent implements OnInit {
   pract= false;
   avMovie="";
   avNotMovie="";
-
   title = "Movie List";
   MovieList: Movie[];
   singleMoive: Movie | undefined;
@@ -69,12 +68,19 @@ export class ContentListComponent implements OnInit {
 
   ngOnInit(): void {
     
-    this.MovieList = this.movieService.getContent();
-    this.singleMoive = this.movieService.getSingleItem(0);
-    console.log(this.singleMoive);
+    // this.MovieList = this.movieService.getContent();
+    // this.singleMoive = this.movieService.getSingleItem(0);
+    // console.log(this.singleMoive);
 
+    this.getMovieListFromServer();  
     
   }
+
+  getMovieListFromServer(): void{
+    this.movieService.getContent().subscribe(movieArray => this.MovieList = movieArray);
+  }
+
+
   listofmovie(cardNameOnTheTypescriptSide: string): void {
     
    
@@ -97,12 +103,25 @@ export class ContentListComponent implements OnInit {
     
   }
 
-  addMovieToList(newMovie : Movie)
+
+
+  addMovieToList(newMovie : Movie) : void
   {
-    this.MovieList.push(newMovie);
-    this.MovieList = Object.assign([], this.MovieList);
-    this.MovieList = [...this.MovieList];
-    console.log("new item added successfully.") 
+    this.movieService
+      .addContent(newMovie)
+      .subscribe((newContentFromServer) => {
+        console.log('New content from server: ', newContentFromServer);
+
+        this.MovieList.push(newContentFromServer);
+        this.MovieList = [...this.MovieList]; // using the spread operator
+      });
+  } 
+    updateContent(contentItem: Movie): void {
+      this.movieService.updateContent(contentItem).subscribe(() => {
+        console.log('Content updated');
+        this.getMovieListFromServer();
+      });
   }
+
 
 }

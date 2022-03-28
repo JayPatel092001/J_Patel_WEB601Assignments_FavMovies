@@ -1,0 +1,34 @@
+<div>
+    id: <input #id type="number" placeholder="Enter Number" required>
+</div>
+<div>
+    title: <input #title placeholder="Enter Title" required>
+</div>
+<div>
+    description: <input #description placeholder="Enter Description" required>
+</div>
+
+<div>
+    creator: <input #creator placeholder="Enter Creator name" required>
+</div>
+<div>
+    image Url: <input #imageUrl class="img">
+</div>
+
+<div>
+<label>Chosse Movie Type</label>
+  <select name="type" #type>
+    <option class="action">action</option>
+    <option class="action and real life">action and real life</option>
+    <option class="Undeclared">Undeclared</option>
+  </select>
+
+</div>
+
+<div>
+    tags: <input #tags placeholder="Enter Tags" required>
+</div>
+<div>
+    <button (click)="addMovie(id.value, title.value,description.value,creator.value, imageUrl.value, type.value, tags.value)">Add Movie Item</button>
+    <button type="submit" (click)="updateMovie(id.value, title.value, imageUrl.value, description.value, creator.value ,type.value , tags.value)">Update Movie</button>
+</div>
