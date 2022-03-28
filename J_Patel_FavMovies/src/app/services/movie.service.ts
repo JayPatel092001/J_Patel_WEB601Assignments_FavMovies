@@ -28,8 +28,8 @@ export class MovieService
       }
 
       addContent(newContentItem: Movie): Observable<Movie>{
-        console.log("added the new content: ", newContentItem);
-        return this.http.post<Movie>("api/food", newContentItem, this.httpOptions);
+        this.msgService.add('Item Added');
+        return this.http.post<Movie>("api/movie", newContentItem, this.httpOptions);
       }
     
       updateContent(contentItem: Movie): Observable<any>{

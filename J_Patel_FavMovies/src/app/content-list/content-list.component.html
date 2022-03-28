@@ -6,6 +6,9 @@
    
 </div>
 
+<app-modify-content-component (newMovieEvent)="addMovieToList($event)" 
+ (updateMovieEvent)="updateContent($event)"></app-modify-content-component>
+
 <app-card *ngIf="singleMoive" [MovieItem]="singleMoive" [class.singleMoive]="singleMoive">
     
 </app-card>

@@ -21,7 +21,7 @@ export class ModifyContentComponentComponent implements OnInit {
   {
     this.newMovie=
     {
-      id: parseInt(id),
+      //id: parseInt(id),
       title: title,
       description: description,
       creator: creator,
