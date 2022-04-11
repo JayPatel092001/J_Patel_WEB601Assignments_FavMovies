@@ -11,4 +11,10 @@
     <div class="tags" appHoverAffect="affect2">{{ MovieItem ? MovieItem.tags : "" }}</div><br>
   </div>
 
+  <div>
+    <a [routerLink]="['/content', MovieItem?.id ?? 0]" routerLinkActive="active">
+      Movie Details
+    </a>
+  </div>
+
   
