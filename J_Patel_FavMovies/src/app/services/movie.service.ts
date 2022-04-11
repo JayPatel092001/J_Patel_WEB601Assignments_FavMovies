@@ -13,6 +13,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class MovieService
 {
+  
     
     private httpOptions = {
         headers: new HttpHeaders({ 'Content-type': 'application/json' })
@@ -20,7 +21,10 @@ export class MovieService
       
     constructor(private http: HttpClient, private msgService: MessageService) { }
 
-    
+    getContentItem(id: number): Observable<Movie>{
+      console.log("Retrieving OBSERVABLE content item");
+      return this.http.get<Movie>("api/food/" + id);
+    }
     getContent(): Observable<Movie[]> { // get the content synchronously - not real world
         this.msgService.add('Movie List');
         return this.http.get<Movie[]>("api/movie");

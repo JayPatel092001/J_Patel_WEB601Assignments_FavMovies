@@ -15,6 +15,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './services/in-memory-data.service';
 import { CreateContentComponent } from './create-content/create-content.component';
+import { ContentDetailComponent } from './content-detail/content-detail.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { CreateContentComponent } from './create-content/create-content.componen
     HoverAffectDirective,
     MessagesComponent,
     ModifyContentComponentComponent,
-    CreateContentComponent
+    CreateContentComponent,
+    ContentDetailComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,

@@ -19,7 +19,7 @@ export class ContentListComponent implements OnInit {
 
   constructor(private movieService: MovieService){
     this.MovieList = [];
-    this.singleMoive ;
+    
     let ourPromise = new Promise((success, fail) => {
       let testPass = false;
       if (testPass) {

@@ -11,7 +11,7 @@ export class CardComponent implements OnInit {
 @Input() MovieItem?: Movie
 
 
-specialColor = "blue";
+
   constructor() {
     
     
@@ -19,6 +19,9 @@ specialColor = "blue";
 
   ngOnInit(): void {
 
+  }
+  imageClicked(): void {
+    console.log("ID: ", this.MovieItem?.id, ", Title: ", this.MovieItem?.title);
   }
 
 }

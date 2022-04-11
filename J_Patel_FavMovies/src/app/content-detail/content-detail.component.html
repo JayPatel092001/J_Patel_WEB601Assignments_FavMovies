@@ -1,0 +1,20 @@
+<div *ngIf="MovieItem" class="movie-{{MovieItem?.id}}" >
+    <div class="title" >{{ MovieItem.title }}</div><br>
+    <div class="description">{{ MovieItem.description }}</div><br>
+    <div class="creator">{{  MovieItem.creator }}</div><br>
+
+   
+
+    <img  *ngIf="MovieItem?.imageUrl" class="image" [src]="MovieItem?.imageUrl">
+    <img  *ngIf="!MovieItem?.imageUrl" class="image"
+        src="https://freepikpsd.com/file/2020/04/bahama-breeze-logo-png-Transparent-Images.png">
+
+
+   
+    <div class="type" appHoverAffect="affect1">{{  MovieItem.type  }}</div><br>
+    <div class="tags" appHoverAffect="affect2">{{  MovieItem.tags  }}</div><br>
+  </div>
+  
+  <div *ngIf="!MovieItem">
+    No food item at that id exists. <a routerLink="../">Go back to the list</a>
+  </div>*
