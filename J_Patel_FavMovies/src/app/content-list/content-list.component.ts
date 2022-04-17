@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Movie } from '../helper-files/movie-interface';
 import { MovieService } from '../services/movie.service';
 import { MessageService } from '../services/message.service';
+import { LogUpdateService } from '../log-update.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-content-list',
@@ -17,7 +19,7 @@ export class ContentListComponent implements OnInit {
   MovieList: Movie[];
   singleMoive: Movie | undefined;
 
-  constructor(private movieService: MovieService){
+  constructor(private movieService: MovieService, private _snackBar : MatSnackBar){
     this.MovieList = [];
     
     let ourPromise = new Promise((success, fail) => {
@@ -66,6 +68,10 @@ export class ContentListComponent implements OnInit {
 
   }
 
+  openSnackBar(){
+    this._snackBar.openFromComponent(LogUpdateService);
+  }
+  
   ngOnInit(): void {
     
     // this.MovieList = this.movieService.getContent();
